@@ -50,6 +50,18 @@ def propagatePartialNBody(fixed_bodies_start, fixed_bodies_end, free_bodies_star
     update_with_accel(ego, duration_s, start_accel_mps2, end_accel_mps2)
   end
 end
+
+def update_with_accel(body, duration_s, start_accel_mps2, end_accel_mps2)
+  # Update body (without metadata)
+  start_vel_mps = body.vel_mps
+  avg_accel_mps2 = (start_accel_mps2 + end_accel_mps2) / 2.0
+
+  body.vel_mps = start_vel_mps + avg_accel_mps2 * duration_s
+  avg_vel_ms2 = (body.vel_mps + start_vel_mps) /2
+  body.pos_m =  body.pos_m + avg_vel_ms2 * duration_s
+  
+  body.epoch += duration_s
+end
 ```
 
 ### License
