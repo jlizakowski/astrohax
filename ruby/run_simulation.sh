@@ -1,3 +1,3 @@
 #!/bin/bash
          
-./asteroid_sim/simulate.rb $@ 
+./asteroid_sim/simulate.rb "$@"

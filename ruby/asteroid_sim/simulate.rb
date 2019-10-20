@@ -144,11 +144,10 @@ def run(opts)
 end
 
 
-
 if ARGV.count != 6
   end_state = run(n_particles:      3, steps: 1e4,
                   :total_duration_s => 60 * 60 * 24 * 4, skip_factor: 1e3,
-                  :query            => '2019 SX5', :epoch => '2008-01-01 00:00')
+                  :query            => 'apophis', :epoch => '2008-01-01 00:00')
 else
   # TODO: make cmd line tool more helpful / optparsing / etc
   query      = ARGV[0]
@@ -157,6 +156,7 @@ else
   steps      = ARGV[3].to_f.to_i #to get sci notation
   n          = ARGV[4].to_f.to_i
   skip       = ARGV[5].to_f.to_i
+  
   start_date = DateTime.parse(start)
   stop_date  = DateTime.parse(stop)
   duration_s = stop_date.to_time - start_date.to_time

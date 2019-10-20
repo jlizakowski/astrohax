@@ -89,14 +89,14 @@ def get_ephem_format2x(query, start_date = "2008-01-01 00:00:00")
   [ftp_filename, body_filename]
 end
 
-
-if ARGV.count >= 1
-  puts "Query: #{ARGV[0]} @ #{ARGV[1]}"
-  epoch = ARGV[1] || "2008-01-01 00:00"
-  ret  = get_ephem_format2x(ARGV[0], epoch)
-  puts "Created: #{ret.inspect}"
+if $0 == __FILE__
+  if ARGV.count >= 1
+    puts "Query: #{ARGV[0]} @ #{ARGV[1]}"
+    epoch = ARGV[1] || "2008-01-01 00:00"
+    ret  = get_ephem_format2x(ARGV[0], epoch)
+    puts "Created: #{ret.inspect}"
+  end
 end
-
 
 
 

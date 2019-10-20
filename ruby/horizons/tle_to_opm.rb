@@ -165,11 +165,13 @@ def convert_to_opm(query, epoch)
   opm_filename
 end
 
-if ARGV.count >= 1          #quick command-line tool
-  query = ARGV[0]
-  epoch = ARGV[1] || "2008-01-01 00:00"
+if $0 == __FILE__
+  if ARGV.count >= 1          #quick command-line tool
+    query = ARGV[0]
+    epoch = ARGV[1] || "2008-01-01 00:00"
 
-  opm_filename = convert(epoch, query)
-  
-  puts "Created: #{opm_filename}"
+    opm_filename = convert_to_opm(epoch, query)
+
+    puts "Created: #{opm_filename}"
+  end
 end
