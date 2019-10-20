@@ -74,15 +74,12 @@ def update_with_accel(body, duration_s, start_accel_mps2, end_accel_mps2)
   body.sim_max_dist = p if  p > body.sim_max_dist
   body.sim_min_dist = p if  p < body.sim_min_dist
 
-  # Methods for finding energy  #TODO
+  # Methods for finding energy
   # body.running_avg_energy_j = (total_energy_j(body) + body.running_avg_energy_j * $running_avg_factor) / ($running_avg_factor +1)
-  # body.running_avg_energy_j = $k * body.running_avg_energy_j + total_energy_j(state) * $m
-  body.running_avg_energy_j += (total_energy_j(body).abs + body.running_avg_energy_j ) * $m
+  body.running_avg_energy_j += (total_energy_j(body).abs + body.running_avg_energy_j ) * $ravg_m  #more efficient
 
   body
 end
-
-
 
 # For debugging, print earth distance
 def print_earth_dist(body, dist_mag_m, ego)

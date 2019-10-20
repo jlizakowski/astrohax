@@ -2,10 +2,10 @@ require 'matrix'
 require 'pp'
 require 'date'
 require 'gsl'
-require './sim_physics'
 
-require './circular_high_low_finder'
-require './constants'
+require_relative './sim_physics'
+require_relative './circular_high_low_finder'
+require_relative './constants'
 
 class OrbitalState
   #given
@@ -95,7 +95,8 @@ class OrbitalState
     state.sim_min_dist    = Float::INFINITY
     state.eccentricity    = opm_vals['ECCENTRICITY']['val'].to_f if opm_vals['ECCENTRICITY']
     state.semi_major_axis = opm_vals['SEMI_MAJOR_AXIS']['val'].to_f * 1000.0 if opm_vals['SEMI_MAJOR_AXIS']
-    state.running_avg_energy_j = kinetic_energy_j(state) + potential_energy_j(state)
+    state.initial_energy_j     = total_energy_j(state)
+    state.running_avg_energy_j = total_energy_j(state)
     state.obj_name        = opm_vals['OBJECT_NAME']['val']
     state.gm_m3ps2        = state.mass_kg * $g_const_m3pkgs2   #if there's a difference, lets use the one that has matching masses
 
