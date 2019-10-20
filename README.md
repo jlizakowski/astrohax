@@ -6,7 +6,7 @@ Disclaimer: Some important things are nice, when stable. Recent changes have qui
 If any of this is useful, I can create a fresh repo with a more solid version of whichever sub-parts are needed.
 
 ### Usage
-```
+```bash
 cd ruby
 
 ./run_simulation.sh
@@ -23,7 +23,8 @@ open results/{sim_name}/forces.fdp.png                  #view graphviz plot of f
 ### Simulation Method
 The main propagation methods use Verlet integration, split to allow for particles.
 
-```# Propagate an array of bodies for a duration
+```ruby
+# Propagate an array of bodies for a duration
 def propagateNBody(free_bodies, duration_s)
   propagatePartialNBody([], [], free_bodies, duration_s)
 end
