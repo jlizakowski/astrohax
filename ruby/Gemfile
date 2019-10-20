@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'rb-gsl'
+gem 'pry'
+gem 'pry-byebug'
+gem 'pry-theme'
+gem 'pry-doc'
+
