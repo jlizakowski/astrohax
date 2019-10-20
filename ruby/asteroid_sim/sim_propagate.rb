@@ -12,7 +12,6 @@ end
 def propagatePartialNBody(fixed_bodies_start, fixed_bodies_end, free_bodies_start, duration_s)
   # e.g.  propagate planets etc separate from particles, and re-use the result
   # requires that the fixed_bodies are not sufficiently affected by the free object
-  # caution: this uses the fixed bodies at their final position, not initial or avg position
 
   free_bodies_end = free_bodies_start.map do |ego|
     start_accel_mps2 = accel_from_masses_mps2(ego, fixed_bodies_start + free_bodies_start)
