@@ -6,15 +6,13 @@ require 'uri'
 require_relative './horizons_common'
 
 def ftp_file(uri, ftp_filename)
-  `mkdir -p #{File.dirname(ftp_filename)}`
-
   Net::FTP.open(uri.host) do |ftp|
     ftp.login
     ftp.getbinaryfile(uri.path, ftp_filename)
   end
 end
 
-# @return [String] Telnet transcript]
+# @return [String] Telnet transcript
 def run_telnet_cmds(cmds, fail_regexp = nil)
   log = ""
   sleep(0.1) #to slow down automated scripts and prevent unintended DOS
@@ -55,7 +53,6 @@ def run_telnet_cmds(cmds, fail_regexp = nil)
   log
 end
 
-# @return [uri]
 def uri_from_log(log)
   #Text contains: "   Full path   :  ftp://ssd.jpl.nasa.gov/pub/ssd/wld8021.15"
 
@@ -69,7 +66,7 @@ def save_body_info(log, bodyfilename)
 end
 
 # @return [Array<String>] Ephem and body filenames
-def get_ephem_format2x(query, start_date = "2008-01-01 00:00")
+def get_ephem_format2x(query, start_date = "2008-01-01 00:00:00")
   delta_t_s = 10.0
 
   start_date = DateTime.parse(start_date).strftime('%F %T')
@@ -95,8 +92,8 @@ end
 
 if ARGV.count >= 1
   puts "Query: #{ARGV[0]} @ #{ARGV[1]}"
-  date = ARGV[1] || "2008-01-01 00:00"
-  ret  = get_ephem_format2x(ARGV[0], date)
+  epoch = ARGV[1] || "2008-01-01 00:00"
+  ret  = get_ephem_format2x(ARGV[0], epoch)
   puts "Created: #{ret.inspect}"
 end
 

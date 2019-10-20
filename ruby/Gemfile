@@ -6,3 +6,7 @@ gem 'pry-byebug'
 gem 'pry-theme'
 gem 'pry-doc'
 
+gem 'rspec'
+gem 'shoulda'
+# gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+

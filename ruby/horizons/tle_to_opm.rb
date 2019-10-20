@@ -152,9 +152,8 @@ def to_opm_file(filename, params, tle_hash)
   end # File.open
 end
 
-if ARGV.count >= 1          #quick command-line tool
-  query = ARGV[0]
-  epoch = ARGV[1] || "2008-01-01 00:00"
+def convert_to_opm(query, epoch)
+  epoch = DateTime.parse(epoch).strftime('%F %T')
 
   ephem_text = File.read(query_to_ephem_filename(query, epoch))
   body_text  = File.read(query_to_body_filename(query, epoch))
@@ -163,5 +162,14 @@ if ARGV.count >= 1          #quick command-line tool
 
   opm_filename = query_to_opm_filename(query, epoch)
   to_opm_file(opm_filename, params, tle_hash)
+  opm_filename
+end
+
+if ARGV.count >= 1          #quick command-line tool
+  query = ARGV[0]
+  epoch = ARGV[1] || "2008-01-01 00:00"
+
+  opm_filename = convert(epoch, query)
+  
   puts "Created: #{opm_filename}"
 end

@@ -1,6 +1,6 @@
 # Horizons OPM Tool
 
-##Goal:
+### Goal
 Purpose: Provide data to a simulator being sketched.  Achieve this rapidly (days), given no prior knowledge of the formats or data sources.
 
 Inputs:
@@ -13,7 +13,7 @@ Outputs:
 * Supporting data in a subdirectory named 'data'
 * Text showing how Horizons telnet is used, and the names of the output files
  
-#### Usage
+### Usage
 Install:
  ```           
 rbenv install 2.6.5   #or latest ruby
