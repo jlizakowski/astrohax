@@ -13,7 +13,7 @@ cd ruby
 ./run_simulation.sh
 
 # Specific examples
-./run_simulation.sh "apophis" "2008-01-01" "2028-01-01" 1e7 20 1e4
+./run_simulation.sh "apophis" "2008-01-01" "2028-01-01" 1e7 20 1e3
 ./run_simulation.sh "2019 MO" "2019-06-22 21:15" "2019-06-22 21:31" 1e4 3 1e0   #collision test
 
 # bonus
